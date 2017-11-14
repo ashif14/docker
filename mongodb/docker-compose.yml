@@ -1,4 +1,4 @@
-version: '2'
+version: '3.2'
 
 services:
   mongodb: 
@@ -7,4 +7,12 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - /mongodb:/data/db
+      - type: "volume"
+        source: "mongodb0"
+        target: "/data/db"
+      - type: "volume"
+        source: "mongodb0_logs"
+        target: "/var/log/mongodb/"
+volumes:
+  mongodb0:
+  mongodb0_logs:
