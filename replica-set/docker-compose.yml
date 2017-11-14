@@ -1,24 +1,42 @@
-version: '2'
+version: '3.2'
 
-services: 
-  mongodb0:
-    build: ./mongodb0/
+services:
+  mongodb0: 
+    # build: ./mongodb0
+    image: mongodb_mongodb
     container_name: "mongodb-master"
     ports:
       - "27017:27017"
     volumes:
-      - /mongodb0:/data/db
+      - type: "volume"
+        source: "mongodb0_data"
+        target: "/data/db0"
+      - type: "volume"
+        source: "mongodb0_logs"
+        target: "/var/log/mongodb/"
     networks: 
-      - mongodb_net
-  
-#   mongodb1:
-#     build: ./mongodb1/
-#     container_name: "mongodb-slave"
-#     ports:
-#       - "27018:27018"
-#     volumes:
-#       - /mongodb1:/data/db
-#     networks: 
-#       - mongodb_net
+      - mongo_net
+
+  mongodb1: 
+    # build: ./mongodb1
+    image: mongodb_mongodb
+    container_name: "mongodb-slave"
+    ports:
+      - "27018:27018"
+    volumes:
+      - type: "volume"
+        source: "mongodb1_data"
+        target: "/data/db1"
+      - type: "volume"
+        source: "mongodb1_logs"
+        target: "/var/log/mongodb/"
+    networks: 
+      - mongo_net
+volumes:
+  mongodb0_data:
+  mongodb0_logs:
+  mongodb1_data:
+  mongodb1_logs:
 networks: 
-  mongodb_net:
+  mongo_net:
+    driver: bridge

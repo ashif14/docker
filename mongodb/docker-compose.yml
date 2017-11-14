@@ -8,11 +8,16 @@ services:
       - "27017:27017"
     volumes:
       - type: "volume"
-        source: "mongodb0"
-        target: "/data/db"
+        source: "mongodb_data"
+        target: "/data/db0"
       - type: "volume"
         source: "mongodb0_logs"
         target: "/var/log/mongodb/"
+    networks: 
+      - mongo_net
 volumes:
-  mongodb0:
+  mongodb_data:
   mongodb0_logs:
+networks: 
+  mongo_net:
+    driver: bridge
