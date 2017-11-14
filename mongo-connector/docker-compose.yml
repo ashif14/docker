@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  mongo_connector: 
+    build: .
+    container_name: "mongo-connector"
+    # volumes:
+      # - /mongoconnector:
+    networks: 
+      - mongodb_default
