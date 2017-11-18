@@ -2,10 +2,33 @@ version: '2'
 
 
 services: 
-  mongodb: 
-    image:  'mongo:latest'
+  mongodb0: 
+    # image:  'mongo:latest'
+    build: .
     container_name: "mongodb"
     ports:
       - "27017:27017"
     volumes:
-      - /mongodb:/data/db
+      - mongodb0_data:/data/db
+      - logs:/var/log/mongodb/
+    networks:
+      - mongo_net
+  mongodb1: 
+    # image:  'mongo:latest'
+    build: .
+    container_name: "mongodb-slave"
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb1_data:/data/db
+      - logs:/var/log/mongodb/
+    networks:
+      - mongo_net
+volumes:
+  mongodb0_data:
+    external: true
+  mongodb1_data:
+    external: true
+  logs:
+networks: 
+  mongo_net:
