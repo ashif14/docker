@@ -32,7 +32,7 @@ services:
         target: "/var/log/mongodb/"
     networks: 
       - mongo_net
-  mongodb: 
+  mongodb2: 
     build: ./mongodb0
     # image: mongodb_mongodb
     container_name: "mongodb2"
