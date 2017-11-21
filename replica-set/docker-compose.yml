@@ -4,7 +4,7 @@ services:
   mongodb0: 
     build: ./mongodb0
     # image: mongodb_mongodb
-    container_name: "mongodb-master"
+    container_name: "mongodb"
     ports:
       - "27017:27017"
     volumes:
@@ -20,7 +20,7 @@ services:
   mongodb1: 
     build: ./mongodb1
     # image: mongodb_mongodb
-    container_name: "mongodb-slave"
+    container_name: "mongodb1"
     ports:
       - "27018:27017"
     volumes:
@@ -35,7 +35,7 @@ services:
   mongodb: 
     build: ./mongodb0
     # image: mongodb_mongodb
-    container_name: "mongodb"
+    container_name: "mongodb2"
     ports:
       - "27019:27017"
     volumes:

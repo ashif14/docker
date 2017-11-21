@@ -1,61 +1,23 @@
 version: '3.2'
 
-<<<<<<< HEAD
-
-services: 
-  mongodb0: 
-    # image:  'mongo:latest'
-    build: .
-=======
 services:
   mongodb: 
     build: .
-    # image: mong
->>>>>>> origin/test
     container_name: "mongodb"
     ports:
       - "27017:27017"
     volumes:
-<<<<<<< HEAD
-      - mongodb0_data:/data/db
-      - logs:/var/log/mongodb/
-    networks:
-      - mongo_net
-  mongodb1: 
-    # image:  'mongo:latest'
-    build: .
-    container_name: "mongodb-slave"
-    ports:
-      - "27018:27017"
-    volumes:
-      - mongodb1_data:/data/db
-      - logs:/var/log/mongodb/
-    networks:
-      - mongo_net
-volumes:
-  mongodb0_data:
-    external: true
-  mongodb1_data:
-    external: true
-  logs:
-networks: 
-  mongo_net:
-=======
       # - mongodb:/data/db
       - type: "volume"
-        source: "mongodb_mongodb_data"
-        target: "/data/db0"
+        source: "data"
+        target: "/data/db"
       - type: "volume"
-        source: "mongodb_mongodb0_logs"
+        source: "logs"
         target: "/var/log/mongodb/"
     networks: 
       - mongo_net
 volumes:
-  mongodb_mongodb_data:
-    external: true
-  mongodb_mongodb0_logs:
-    external: true
+  data:
+  logs:
 networks: 
   mongo_net:
-    driver: bridge
->>>>>>> origin/test
