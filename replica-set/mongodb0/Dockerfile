@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-FROM 'mongo:latest'
-
-ADD ./mongod.conf /config/mongod.conf
-
-CMD [ "mongod", "-f", "/config/mongod.conf" ]
-=======
 FROM mongo:latest
 
 # Volume for mongodb data to persist
@@ -17,4 +10,3 @@ ADD ./mongod.conf /etc/mongod.conf
 
 # Entrypoint, start with mongod.conf configuration file
 CMD [ "mongod", "-f", "/etc/mongod.conf" ]
->>>>>>> origin/test

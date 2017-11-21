@@ -1,14 +1,22 @@
-version: '2'
+version: '3.2'
 
+<<<<<<< HEAD
 
 services: 
   mongodb0: 
     # image:  'mongo:latest'
     build: .
+=======
+services:
+  mongodb: 
+    build: .
+    # image: mong
+>>>>>>> origin/test
     container_name: "mongodb"
     ports:
       - "27017:27017"
     volumes:
+<<<<<<< HEAD
       - mongodb0_data:/data/db
       - logs:/var/log/mongodb/
     networks:
@@ -32,3 +40,22 @@ volumes:
   logs:
 networks: 
   mongo_net:
+=======
+      # - mongodb:/data/db
+      - type: "volume"
+        source: "mongodb_mongodb_data"
+        target: "/data/db0"
+      - type: "volume"
+        source: "mongodb_mongodb0_logs"
+        target: "/var/log/mongodb/"
+    networks: 
+      - mongo_net
+volumes:
+  mongodb_mongodb_data:
+    external: true
+  mongodb_mongodb0_logs:
+    external: true
+networks: 
+  mongo_net:
+    driver: bridge
+>>>>>>> origin/test

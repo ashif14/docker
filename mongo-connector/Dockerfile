@@ -1,0 +1,1 @@
+FROM yeasy/mongo-connector:latest
