@@ -1,4 +1,4 @@
-version: '3.2'
+version: '2'
 
 services:
   mongodb0: 
@@ -8,12 +8,8 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - type: "volume"
-        source: "data0"
-        target: "/data/db"
-      - type: "volume"
-        source: "logs0"
-        target: "/var/log/mongodb/"
+      - "data0:/data/db"
+      - "logs0:/var/log/mongodb/"
     networks: 
       - mongo_net
 
@@ -24,12 +20,8 @@ services:
     ports:
       - "27018:27017"
     volumes:
-      - type: "volume"
-        source: "data1"
-        target: "/data/db"
-      - type: "volume"
-        source: "logs1"
-        target: "/var/log/mongodb/"
+      - "data1:/data/db"
+      - "logs1:/var/log/mongodb/"
     networks: 
       - mongo_net
   mongodb2: 
@@ -39,12 +31,8 @@ services:
     ports:
       - "27019:27017"
     volumes:
-      - type: "volume"
-        source: "data2"
-        target: "/data/db"
-      - type: "volume"
-        source: "logs2"
-        target: "/var/log/mongodb/"
+      - "data2:/data/db"
+      - "logs2:/var/log/mongodb/"
     networks: 
       - mongo_net
 volumes:
